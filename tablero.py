@@ -14,9 +14,9 @@ class Tablero:
         self.tecla = None
         self.nivel = mundo.crearNivel()
         self.fichas.append(jugador)
-        self.agregarCofre(48, 4)
-        self.agregarMonstruo(Gusano(), 7, 8)
-        self.agregarMonstruo(Gusano(), 11, 6)
+        self.agregarCofre(11, 4)
+        self.agregarMonstruo(Gusano(), 48, 5)
+        self.agregarMonstruo(Gusano(), 50, 7)
         self.agregarMonstruo(AlienK(), 10, 22)
         self.agregarMonstruo(Enemergy(), 11, 24)
 

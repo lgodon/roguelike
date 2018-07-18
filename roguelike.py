@@ -1,7 +1,7 @@
 import tiles
 import tablero
 from jugador import Jugador
-
+from items.llave import Llave
 
 def dibujarPantalla():
     tiles.borrarPantalla()
@@ -11,6 +11,7 @@ def dibujarPantalla():
 
 
 jugador = Jugador()
+#jugador.asignarArma(Llave())
 tablero = tablero.Tablero(jugador)
 tiles.iniciar()
 

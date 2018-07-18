@@ -8,6 +8,16 @@ class Jugador(Ficha):
     def __init__(self):
         super().__init__(8, 4, 'jugador', 'astronauta.png')
         self.vida = 200
+        self.arma = None
+
+    def asignarArma(self, arma):
+        self.arma = arma
+
+    def calcularDaño(self):
+        if self.arma:
+            return self.arma.daño
+        else:
+            return 1
 
     def pegar(self, jDaño):
         self.vida = self.vida - jDaño
@@ -40,7 +50,7 @@ class Jugador(Ficha):
 
                 if isinstance(ficha, Monstruo):
                     # Pegarle al monstruo
-                    ficha.pegar(1)
+                    ficha.pegar(self.calcularDaño())
                     if ficha.estaMuerto():
                         tablero.agregarMensaje('Mataste al %s' % ficha.getNombre())
                     else:
@@ -48,7 +58,7 @@ class Jugador(Ficha):
 
                 elif isinstance(ficha, Cofre):
                     # Abrir el cofre
-                    ficha.abrir()
+                    ficha.abrir(tablero)
 
 
 

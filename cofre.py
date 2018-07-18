@@ -1,4 +1,6 @@
 from ficha import Ficha
+from random import randint
+from items.llave import Llave
 
 
 class Cofre(Ficha):
@@ -13,11 +15,21 @@ class Cofre(Ficha):
         # ¡El cofre no se mueve!
         pass
 
-    def abrir(self):
+    def abrir(self, tablero):
+        if self.abierto:
+            tablero.agregarMensaje('El cofre está vacio...')
+            return
+
         self.abierto = True
+        if randint(0, 100) < 75:
+            arma = Llave()
+            tablero.getJugador().asignarArma(arma)
+            tablero.agregarMensaje('¡Conseguiste una %s!' % arma.nombre)
+        else:
+            tablero.agregarMensaje('El cofre está vacio...')
         
     def getImagen(self):
-        if self.abierto == False:
+        if not self.abierto:
             return 'cofre_cerrado.png'
         else:
             return 'cofre_abierto.png'
